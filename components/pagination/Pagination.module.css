@@ -1,0 +1,10 @@
+.pagination li button{
+    height: 40px;
+    color: red;
+    font-weight: 600;
+}
+.pagination {
+    background-color: white;
+    border-radius: 20px;
+    z-index: 99;
+}

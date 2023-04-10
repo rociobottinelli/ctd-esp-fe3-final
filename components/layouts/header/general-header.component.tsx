@@ -6,27 +6,29 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import NextLink from 'next/link'
 import {Link as MUILink} from '@mui/material';
+import style from "../general-header.module.css"
 
 type Props = {
     variant?: "simple" | "general"
 }
 
 const Header: FC<Props> = ({variant}: Props) => {
-    return <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    return <Container maxWidth="l" className={style.header}>
+        <Toolbar disableGutters >
             <NextLink href="/" passHref>
                 <MUILink variant="h6" sx={{
                     mr: 2,
                     flexGrow: 1,
                     fontWeight: 700,
-                    color: 'inherit',
+                    color: 'white',
                     textDecoration: 'none',
+                    
                 }}> DH-Marvel</MUILink>
             </NextLink>
             {variant == 'general' &&
                 <Box>
-                    <NextLink href="/" passHref>
-                        <MUILink variant="body2" sx={{color: 'white', fontSize: 18, fontWeight: 600}}>FAQ</MUILink>
+                    <NextLink href="/faq" passHref>
+                        <MUILink variant="body2" sx={{color: 'white', fontSize: 18, fontWeight: 600}} className={style.faqLink}>FAQ</MUILink>
                     </NextLink>
                 </Box>
             }
@@ -37,8 +39,8 @@ const Header: FC<Props> = ({variant}: Props) => {
 
 const GeneralHeader: FC<Props> = ({variant}: Props) => {
     return variant == 'general' ?
-        <AppBar position="static">
-            <Header variant={variant}/>
+        <AppBar className={style.header} position="static">
+            <Header variant={variant} />
         </AppBar> : <Header variant={variant}/>
         ;
 };

@@ -1,0 +1,21 @@
+.detailImage {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.comprarButton {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    padding: 10px;
+    background-color: #2f385e;
+  }
+   .comprarButton:hover{
+      color: red;
+      background-color: black;
+  }
+  .comprarButton:hover{
+      color: red;
+      background-color: #2f385e;
+  }
+  .comprarButtonDisabled{
+    background-color: rgb(190, 188, 188);  
+}

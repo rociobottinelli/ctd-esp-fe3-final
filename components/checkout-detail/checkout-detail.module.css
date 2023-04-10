@@ -1,0 +1,24 @@
+.divDetail {
+   display: flex;
+   flex-direction: row;
+   background-color: #2f385e;
+   color: white;
+   border-radius: 5px;
+   padding: 20px;
+   box-shadow: 14px 11px 30px -10px rgba(0, 0, 0, 0.69);
+    -webkit-box-shadow: 14px 11px 30px -10px rgba(0, 0, 0, 0.69);
+    gap: 10px;
+    justify-content: space-between;
+    margin: 50px 0;
+}
+.detailImage{
+    max-width: 300px;
+    max-height: 300px;
+}
+.comicTitle {
+    font-weight: 600;
+}
+.priceDetails {
+    margin-top: 20px;
+    display: flex
+}

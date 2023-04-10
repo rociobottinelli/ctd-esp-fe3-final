@@ -1,0 +1,14 @@
+.header {
+    background-color: red;
+}
+.faqLink {
+    box-shadow: inset 0 0 0 0 #2f385e;
+    text-decoration: none;
+    margin: 0 -.25rem;
+    padding: 0 .45rem;
+    transition: color .3s ease-in-out ,box-shadow .3s ease-in-out;
+}
+.faqLink:hover {
+    box-shadow: inset 100px 0 0 0 #2f385e;
+    color: white;
+}

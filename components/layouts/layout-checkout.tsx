@@ -10,8 +10,8 @@ const LayoutCheckout: FC<PropsWithChildren> = ({children}: PropsWithChildren) =>
 
     return (<>
             <Stack direction={"column"} height={'100%'}>
-                <GeneralHeader variant={'simple'}/>
-                <Box display={'flex'} flexGrow={1}>
+                <GeneralHeader variant={'simple'} />
+                <Box display={'flex'} flexGrow={1} margin={"auto"}>
                     {children}
                 </Box>
                 <GeneralFooter />

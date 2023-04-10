@@ -1,0 +1,17 @@
+.characterName{
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+    padding: 90px 0 40px;
+}
+.characterImage {
+    max-width: 450px;
+    align-self: center;
+}
+.characterDescription {
+    margin-top: 30px;
+    max-width: 500px;
+    align-self: center;
+    text-align: justify;
+    font-style: italic;
+}

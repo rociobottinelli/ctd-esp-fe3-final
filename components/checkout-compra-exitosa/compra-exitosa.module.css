@@ -1,0 +1,33 @@
+.card {
+    background-color: rgb(207, 198, 198);
+    display: flex;
+    padding: 30px;
+    border-radius: 5px;
+}
+.orderImg {
+    max-width: 300px;
+    max-height: 300px;
+}
+.divText {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+.textThanks {
+    font-size: 20px;
+}
+.icon {
+    align-self: center;
+}
+.orderName {
+    margin-top: 20px;
+    font-weight: 600;
+}
+.divDatos {
+    padding-top:15px ;
+}
+.titleDatos {
+    font-size: 18px;
+    font-weight: 600;
+}
