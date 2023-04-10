@@ -51,21 +51,21 @@ const Character: NextPage<PropsCharacter> = ({ character }) => {
       <Stack component="section" direction="column" alignItems="center">
         <Stack component="section">
           <Typography className={style.characterName} variant="h3">
-            {character.name}
+            {character?.name}
           </Typography>
           <Box
             className={style.characterImage}
             component="img"
-            alt={character.name}
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+            alt={character?.name}
+            src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
           />
-          {character.description ? (
+          {character?.description ? (
             <Typography
               className={style.characterDescription}
               gutterBottom
               component="div"
             >
-              {character.description}
+              {character?.description}
             </Typography>
           ) : (
             <></>

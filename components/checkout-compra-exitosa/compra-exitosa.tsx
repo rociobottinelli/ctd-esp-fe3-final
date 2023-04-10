@@ -4,7 +4,7 @@ import { FC } from "react";
 import { ICheckout } from "types/Types";
 import style from "./compra-exitosa.module.css";
 type CardSuccessProps = {
-  data: ICheckout|undefined;
+  data: ICheckout;
 };
 
 const CardSuccess: FC<CardSuccessProps> = ({ data }) => {
