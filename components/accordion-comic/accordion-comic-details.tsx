@@ -20,7 +20,7 @@ interface AccordionProps {
   comic: IComic;
 }
 const AccordionDetailsComponent: FC<AccordionProps> = ({ comic }) => {
-  return comic.description !== null && comic.description !== "" ? (
+  return comic?.description !== null && comic?.description !== "" ? (
     <Accordion>
       <AccordionSummary
         expandIcon={<ArrowForwardIosSharpIcon />}
@@ -30,12 +30,12 @@ const AccordionDetailsComponent: FC<AccordionProps> = ({ comic }) => {
         <Typography>Descripción</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>{comic.description}</Typography>
+        <Typography>{comic?.description}</Typography>
       </AccordionDetails>
     </Accordion>
   ) : (
     <></> &&
-      (comic.characters.items.length > 0 ? (
+      (comic?.characters.items.length > 0 ? (
         <Accordion>
           <AccordionSummary
             expandIcon={<ArrowForwardIosSharpIcon />}
@@ -45,7 +45,7 @@ const AccordionDetailsComponent: FC<AccordionProps> = ({ comic }) => {
             <Typography>Personajes</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {comic.characters.items.map((c) => {
+            {comic?.characters.items.map((c) => {
               return (
                 <NextLink
                   href={`/personajes/${getId(c.resourceURI)}`}
@@ -57,12 +57,12 @@ const AccordionDetailsComponent: FC<AccordionProps> = ({ comic }) => {
                 </NextLink>
               );
             })}
-            <Typography>{comic.description}</Typography>
+            <Typography>{comic?.description}</Typography>
           </AccordionDetails>
         </Accordion>
       ) : (
         <></> &&
-        (comic.creators.items.length > 0 ? (
+        (comic?.creators.items.length > 0 ? (
           <Accordion>
             <AccordionSummary
               expandIcon={<ArrowForwardIosSharpIcon />}
@@ -72,7 +72,7 @@ const AccordionDetailsComponent: FC<AccordionProps> = ({ comic }) => {
               <Typography>Creadores</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {comic.creators.items.map((cr) => {
+              {comic?.creators.items.map((cr) => {
                 return (
                   <Typography key={cr.name}>
                     {cr.name} | {cr.role}
