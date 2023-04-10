@@ -24,15 +24,15 @@ const CardComicDetails: NextPage<Props> = ({ comic }) => {
       }}
     >
       <Typography gutterBottom variant="subtitle1" component="div">
-        Serie: {comic.series.name}
+        Serie: {comic?.series.name}
       </Typography>
       <Typography gutterBottom variant="h5" className={style.comicTitle}>
-        {comic.title}
+        {comic?.title}
       </Typography>
       <Box>
-        {comic.oldPrice && comic.stock > 0 && (
+        {comic?.oldPrice && comic?.stock > 0 && (
           <Typography className={style.oldPrice}         >
-            Antes: ${comic.oldPrice}
+            Antes: ${comic?.oldPrice}
           </Typography>
         )}
 
@@ -42,7 +42,7 @@ const CardComicDetails: NextPage<Props> = ({ comic }) => {
           </Typography>
         )}
       </Box>
-      <Typography className={style.finalPrice}>${comic.price}</Typography>
+      <Typography className={style.finalPrice}>${comic?.price}</Typography>
     </Box>
   );
 };
