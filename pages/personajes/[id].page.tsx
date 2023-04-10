@@ -42,10 +42,10 @@ const Character: NextPage<PropsCharacter> = ({ character }) => {
   return (
     <>
       <Head>
-        <title>{character.name}</title>
+        <title>{character?.name}</title>
         <meta
           name="description"
-          content={`${character.name}.${character.description}`}
+          content={`${character?.name}.${character?.description}`}
         />
       </Head>
       <Stack component="section" direction="column" alignItems="center">
