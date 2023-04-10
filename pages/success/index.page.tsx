@@ -29,7 +29,7 @@ const SuccesCheckout: NextPage = () => {
       <title>¡Gracias por tu compra!</title>
       </Head>
     <Stack paddingTop={20} direction="column" alignItems="center">
-      <CardSuccess data={dataCheckout} />
+      <CardSuccess data={dataCheckout as ICheckout} />
       <NextLink href="/">
         <Button sx={{ margin: 15 }}>
           VOLVER AL INICIO
