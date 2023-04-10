@@ -45,8 +45,8 @@ const Comic: NextPage<Props> = ({ comic }) => {
   return (
     <>
       <Head>
-        <title>{comic.title}</title>
-        <meta name="description" content={`Comic: ${comic.title}`} />
+        <title>{comic?.title}</title>
+        <meta name="description" content={`Comic: ${comic?.title}`} />
       </Head>
       <Stack
         component="section"
@@ -63,9 +63,9 @@ const Comic: NextPage<Props> = ({ comic }) => {
             <Box>
               <Box
                 component="img"
-                alt={comic.title}
+                alt={comic?.title}
                 className={style.detailImage}
-                src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                src={`${comic?.thumbnail.path}.${comic?.thumbnail.extension}`}
                 sx={{
                   margin: "auto",
                   maxWidth: "100%",
@@ -81,9 +81,9 @@ const Comic: NextPage<Props> = ({ comic }) => {
                 paddingBottom: "90px",
               }}
             >
-              {comic.stock > 0 ? (
+              {comic?.stock > 0 ? (
                 <NextLink
-                  href={{ pathname: "/checkout/", query: `comic=${comic.id}` }}
+                  href={{ pathname: "/checkout/", query: `comic=${comic?.id}` }}
                 >
                   <Button className={style.comprarButton}>
                     COMPRAR
