@@ -7,11 +7,6 @@ import CardComponent from "../card/Card";
 
 interface Props {
   comics: IComic[];
-  xs?: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-  xl?: number;
 }
 
 const GridLayout: NextPage<Props> = ({

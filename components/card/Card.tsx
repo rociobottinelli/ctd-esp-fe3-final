@@ -36,6 +36,7 @@ const CardComponent: FC<Props> = ({ comic }) => {
     <Card variant="outlined" className={style.card}>
       <Box>
         <CardMedia
+        className="imageCard"
           image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
           alt={comic.title}
           height={270}

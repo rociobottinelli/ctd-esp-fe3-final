@@ -9,7 +9,6 @@ import { getComics } from "dh-marvel/services/marvel/marvel.service";
 import { getComicsByPage } from "dh-marvel/services/comics/comics.service";
 import GridLayout from "dh-marvel/components/home-comics/home-comics.component";
 import PaginationComponent from "dh-marvel/components/pagination/Pagination";
-import Image from "next/image";
 
 interface Props {
   comics: IComicResponse;
