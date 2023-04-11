@@ -10,13 +10,12 @@ import { getComicsByPage } from "dh-marvel/services/comics/comics.service";
 import GridLayout from "dh-marvel/components/home-comics/home-comics.component";
 import PaginationComponent from "dh-marvel/components/pagination/Pagination";
 
-interface Props {
+interface PropsIndex {
   comics: IComicResponse;
 }
 
-const QTY_OF_CARDS = 12;
 
-const Index: NextPage<Props> = ({ comics }) => {
+const Index: NextPage<PropsIndex> = ({ comics }) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const [comicsData, setComicsData] = useState<IComicResponse>();
@@ -29,7 +28,7 @@ const Index: NextPage<Props> = ({ comics }) => {
     if (currentPage !== null) {
       router.push(`/?page=${currentPage}`, undefined, { shallow: true });
 
-      getComicsByPage(QTY_OF_CARDS, currentPage).then(
+      getComicsByPage(12, currentPage).then(
         (data: IComicResponse) => {
           if (data.code === 200) {
             setComicsData(data);
@@ -72,17 +71,13 @@ const Index: NextPage<Props> = ({ comics }) => {
             }
           />
         </Box>
-        <PaginationComponent
-          pagesQty={pagesQty}
-          setCurrentPage={setCurrentPage}
-        />
       </Stack>
     </>
   );
 };
 
 export async function getServerSideProps() {
-  const comics = await getComics(0, QTY_OF_CARDS);
+  const comics = await getComics(0, 12);
   return { props: { comics } };
 }
 
