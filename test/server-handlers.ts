@@ -1,7 +1,7 @@
 import {rest} from 'msw'
 import comics from "dh-marvel/test/mocks/comics";
 import character from "dh-marvel/test/mocks/character";
-import comic from "dh-marvel/test/mocks/comic";
+import {comic} from "dh-marvel/test/mocks/comic";
 import comicsWithOffsetAndLimit from "dh-marvel/test/mocks/comicsWithOffsetAndLimit";
 import comicWithoutStock from "dh-marvel/test/mocks/comicWithoutStock";
 
