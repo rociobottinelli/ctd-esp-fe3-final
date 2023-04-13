@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`usuarioSchema usuarioSchema should fail validation when email is missing 1`] = `"El email es un campo requerido."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when email is not a valid format 1`] = `"Por favor ingrese un mail válido."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when lastname is missing 1`] = `"El apellido es un campo requerido."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when lastname is too long 1`] = `"Por favor ingrese mínimo 50 caracteres."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when lastname is too short 1`] = `"Por favor ingrese mínimo 2 caracteres."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when name is missing 1`] = `"El nombre es un campo requerido."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when name is too long 1`] = `"Por favor ingrese mínimo 50 caracteres."`;
+
+exports[`usuarioSchema usuarioSchema should fail validation when name is too short 1`] = `"Por favor ingrese mínimo 2 caracteres."`;
