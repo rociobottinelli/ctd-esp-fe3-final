@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import DeliveryForm from "./forms/formEntrega/form-entrega.component";
 import PaymentForm from "./forms/formPago/form-pago.component";
 import { MockedComic } from "dh-marvel/test/mocks/comic";
-import StepperForm from "./forms/checkout-stepper.component";
+import StepperForm from "./stepper/checkout-stepper.component";
 
 export function helperFormHook(ui: ReactElement, { defaultValues = {} } = {}) {
   const Wrapper: FC<PropsWithChildren> = ({ children }) => {

@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import pagoSchema from "./schema";
 import { Box, Stack } from "@mui/material";
-import StepperNavigation from "../checkout-stepper-navigation.component";
+import StepperNavigation from "../../stepper/checkout-stepper-navigation.component";
 import { ICard } from "types/Types";
 import FormInput from "dh-marvel/components/forms/form-input/FormInput.component";
 

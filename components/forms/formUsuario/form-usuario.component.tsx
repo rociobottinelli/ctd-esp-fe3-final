@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { FC, useEffect } from "react";
 import { usuarioSchema } from "./schema";
-import StepperNavigation from "../checkout-stepper-navigation.component";
+import StepperNavigation from "../../stepper/checkout-stepper-navigation.component";
 import { ICustomer } from "types/Types";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

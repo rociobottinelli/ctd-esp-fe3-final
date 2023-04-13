@@ -7,11 +7,11 @@ import {
   StepButton,
   Alert,
 } from "@mui/material";
-import DeliveryForm from "./formEntrega/form-entrega.component";
-import PaymentForm from "./formPago/form-pago.component";
-import CustomerDataForm from "./formUsuario/form-usuario.component";
+import DeliveryForm from "../forms/formEntrega/form-entrega.component";
+import PaymentForm from "../forms/formPago/form-pago.component";
+import CustomerDataForm from "../forms/formUsuario/form-usuario.component";
 import { postCheckout } from "dh-marvel/services/checkout/checkout.service";
-import catchError from "./checkout-errors";
+import catchError from "../forms/checkout-errors";
 import { useRouter } from "next/router";
 import { IAddress, ICard, ICheckout, IComic, ICustomer } from "types/Types";
 

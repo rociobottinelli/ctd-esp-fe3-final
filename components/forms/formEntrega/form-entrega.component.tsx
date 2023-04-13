@@ -3,7 +3,7 @@ import { FC, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import entregaSchema from "./schema";
-import StepperNavigation from "../checkout-stepper-navigation.component";
+import StepperNavigation from "../../stepper/checkout-stepper-navigation.component";
 import { IAddress } from "types/Types";
 import FormInput from "dh-marvel/components/forms/form-input/FormInput.component";
 
