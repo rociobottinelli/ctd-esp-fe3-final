@@ -10,7 +10,7 @@ type TextInputProps = {
   defaultValue?: string;
   maxLength?: number;
   regex?: RegExp;
-  type?: "text" | "password" | "number" | "tel" | string;
+  type?: "text" | "number" | "password" | "tel" | string;
 };
 
 const FormInput: FC<TextInputProps> = ({

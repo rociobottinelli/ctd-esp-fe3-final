@@ -1,4 +1,11 @@
-import { screen, render } from "@testing-library/react";
+import {
+  screen,
+  render,
+  fireEvent,
+  getByRole,
+  getByText,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CustomerDataForm from "./forms/formUsuario/form-usuario.component";
 import { FC, PropsWithChildren, ReactElement } from "react";
@@ -7,6 +14,8 @@ import DeliveryForm from "./forms/formEntrega/form-entrega.component";
 import PaymentForm from "./forms/formPago/form-pago.component";
 import { MockedComic } from "dh-marvel/test/mocks/comic";
 import StepperForm from "./stepper/checkout-stepper.component";
+import { PagoFormProps } from "./forms/formPago/form-pago.component";
+import { IAddress } from "types/Types";
 
 export function helperFormHook(ui: ReactElement, { defaultValues = {} } = {}) {
   const Wrapper: FC<PropsWithChildren> = ({ children }) => {
@@ -278,6 +287,166 @@ describe("Testing Stepper", () => {
       expect(step2).toBeInTheDocument();
       const step3 = screen.getByText("Datos del pago");
       expect(step3).toBeInTheDocument();
+    });
+  });
+
+  describe("PaymentForm", () => {
+    const handleNext = jest.fn();
+    const handleBack = jest.fn();
+
+    const props: PagoFormProps = {
+      activeStep: 1,
+      handleNext: handleNext,
+      handleBack: handleBack,
+    };
+
+    it("should call handleNext with correct data when form is submitted", async () => {
+      const { getByLabelText } = render(<PaymentForm {...props} />);
+
+      fireEvent.change(getByLabelText(/número de la tarjeta/i), {
+        target: { value: "1234567890123456" },
+      });
+      fireEvent.change(getByLabelText(/nombre como figura en la tarjeta/i), {
+        target: { value: "John Doe" },
+      });
+      fireEvent.change(getByLabelText(/fecha expiración/i), {
+        target: { value: "1225" },
+      });
+      fireEvent.change(getByLabelText(/cvc/i), {
+        target: { value: "123" },
+      });
+
+      const btnSubmit = screen.getByText("SIGUIENTE");
+      userEvent.click(btnSubmit);
+
+      waitFor(() =>
+        expect(handleNext).toHaveBeenCalledWith({
+          number: "1234567890123456",
+          nameOnCard: "John Doe",
+          expDate: "1225",
+          cvc: "123",
+        })
+      );
+    });
+  });
+
+  describe("DeliveryForm component", () => {
+    const data: IAddress = {
+      address1: "Test Address 1",
+      address2: "Test Address 2",
+      city: "Test City",
+      state: "Test State",
+      zipCode: "12345",
+    };
+
+    it("renders all form inputs", () => {
+      render(
+        <DeliveryForm
+          data={data}
+          activeStep={0}
+          handleNext={() => {}}
+          handleBack={() => {}}
+        />
+      );
+
+      const address1Input = screen.getByLabelText("Dirección");
+      expect(address1Input).toBeInTheDocument();
+
+      const address2Input = screen.getByLabelText("Dirección alternativa");
+      expect(address2Input).toBeInTheDocument();
+
+      const cityInput = screen.getByLabelText("Ciudad");
+      expect(cityInput).toBeInTheDocument();
+
+      const stateInput = screen.getByLabelText("Provincia");
+      expect(stateInput).toBeInTheDocument();
+
+      const zipCodeInput = screen.getByLabelText("Código postal");
+      expect(zipCodeInput).toBeInTheDocument();
+    });
+
+    it("calls handleNext in form submit", async () => {
+      const handleNext = jest.fn();
+
+      render(
+        <DeliveryForm
+          data={data}
+          activeStep={0}
+          handleNext={handleNext}
+          handleBack={() => {}}
+        />
+      );
+
+      const address1Input = screen.getByLabelText("Dirección");
+      fireEvent.change(address1Input, { target: { value: "Test Address 1" } });
+
+      const submitButton = screen.getByRole("button", { name: "SIGUIENTE" });
+      fireEvent.click(submitButton);
+      waitFor(() => expect(handleNext).toHaveBeenCalledTimes(1));
+      waitFor(() =>
+        expect(handleNext).toHaveBeenCalledWith({
+          address1: "Test Address 1",
+          address2: "Test Address 2",
+          city: "Test City",
+          state: "Test State",
+          zipCode: "12345",
+        })
+      );
+    });
+
+    it("handleBack on click", () => {
+      const handleBack = jest.fn();
+
+      render(
+        <DeliveryForm
+          data={data}
+          activeStep={1}
+          handleNext={() => {}}
+          handleBack={handleBack}
+        />
+      );
+
+      const backButton = screen.getByRole("button", { name: "ANTERIOR" });
+      fireEvent.click(backButton);
+
+      expect(handleBack).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe("PaymentForm", () => {
+    it("submit with valid data", () => {
+      const handleNext = jest.fn();
+      const handleBack = jest.fn();
+      render(
+        <PaymentForm
+          activeStep={1}
+          handleNext={handleNext}
+          handleBack={handleBack}
+        />
+      );
+
+      const numberInput = screen.getByLabelText("Número de la tarjeta");
+      const nameOnCardInput = screen.getByLabelText(
+        "Nombre como figura en la tarjeta"
+      );
+      const expDateInput = screen.getByLabelText("Fecha expiración");
+      const cvcInput = screen.getByLabelText("CVC");
+      const submitButton = screen.getByText("SIGUIENTE");
+
+      fireEvent.change(numberInput, { target: { value: "4111111111111111" } });
+      fireEvent.change(nameOnCardInput, { target: { value: "John Doe" } });
+      fireEvent.change(expDateInput, { target: { value: "1225" } });
+      fireEvent.change(cvcInput, { target: { value: "123" } });
+      fireEvent.click(submitButton);
+      waitFor(() => expect(handleNext).toHaveBeenCalledTimes(1));
+      waitFor(() =>
+        expect(handleNext).toHaveBeenCalledWith({
+          number: "4111111111111111",
+          nameOnCard: "John Doe",
+          expDate: "1225",
+          cvc: "123",
+        })
+      );
     });
   });
 });
