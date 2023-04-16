@@ -29,11 +29,14 @@ const CardSuccess: FC<CardSuccessProps> = ({ data }) => {
           variant="h4"
           className={style.textThanks}
         >
-          Gracias por tu compra, ¡esperamos que la disfrutes!
+          Que disfrutes tu compra
         </Typography>
         <Box>
           <Typography className={style.orderName}>
             {data?.order.name}
+          </Typography>
+          <Typography >
+            Precio = ${data?.order.price}
           </Typography>
         </Box>
         <Box className={style.divDatos}>

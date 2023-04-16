@@ -5,7 +5,7 @@ describe("Rendering success card", () => {
   test("rendering msg component", () => {
     render(<CardSuccess data={mockCheckout} />);
     const msgThanks = screen.getByText(
-      "Gracias por tu compra, ¡esperamos que la disfrutes!"
+      "Que disfrutes tu compra"
     );
     expect(msgThanks).toBeInTheDocument();
   });

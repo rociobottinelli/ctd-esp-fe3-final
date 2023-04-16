@@ -14,6 +14,8 @@ const Checkout: NextPage = () => {
   const router = useRouter();
   const { comic } = router.query;
   const [comicData, setComicData] = useState<IComic>();
+  const [isReady, setIsReady] = useState(false);
+
 
   useEffect(() => {
     const id = parseInt(comic as string);
@@ -21,9 +23,16 @@ const Checkout: NextPage = () => {
     if (comic) {
       getComicsById(id).then((data) => {
         setComicData(data);
+        setIsReady(true);
       });
+    } else {
+      router.push('/');
     }
-  }, [comic]);
+  }, [comic, router]);
+
+  if (!isReady) {
+    return null; 
+  }
 
 
   return (

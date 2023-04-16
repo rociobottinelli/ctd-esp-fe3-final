@@ -11,16 +11,23 @@ import Head from "next/head";
 const SuccesCheckout: NextPage = () => {
   const router = useRouter();
   const [dataCheckout, setDataCheckout] = useState<ICheckout>();
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem("checkoutData");
     if (data !== null) {
       const obj = JSON.parse(data);
       setDataCheckout(obj);
+      setIsReady(true);
     } else {
-      router.push("/");
+      router.push('/');
     }
   }, []);
+
+  if (!isReady) {
+    return null; 
+  }
+
 
 
   return (

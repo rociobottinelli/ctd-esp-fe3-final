@@ -5,6 +5,7 @@ import {
   Stepper,
   Step,
   StepButton,
+  Snackbar,
   Alert,
 } from "@mui/material";
 import DeliveryForm from "../forms/formEntrega/form-entrega.component";
@@ -22,6 +23,8 @@ type StepperForm = {
 };
 
 const StepperForm: FC<StepperForm> = ({ comic }) => {
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+
   const defaultValue = {
     customer: {
       name: "",
@@ -108,6 +111,7 @@ const StepperForm: FC<StepperForm> = ({ comic }) => {
       if (!response.data) {
         const error = catchError(response);
         setError(error);
+        setOpenSnackbar(true);
         return;
       } else {
         const customer = response.data.customer;
@@ -121,7 +125,7 @@ const StepperForm: FC<StepperForm> = ({ comic }) => {
           })
         );
         router.push({
-          pathname: "/success",
+          pathname: "/confirmacion-compra",
         });
       }
     });
@@ -129,6 +133,9 @@ const StepperForm: FC<StepperForm> = ({ comic }) => {
 
   const handleBack = () => {
     activeStep > 0 && setActiveStep(activeStep - 1);
+  };
+  const handleCloseErrorSnackbar = () => {
+    setError("");
   };
 
   return (
@@ -179,14 +186,17 @@ const StepperForm: FC<StepperForm> = ({ comic }) => {
         )}
       </Box>
       {error !== "" && (
-        <Alert
-          severity="error"
-          sx={{
-            marginTop: "30px",
-          }}
-        >
-          {error}
-        </Alert>
+        <Snackbar
+    open={openSnackbar}
+    autoHideDuration={6000}
+    onClose={() => setOpenSnackbar(false)}
+    message={error}
+    sx={{ marginTop: "30px" }}
+  >
+     <Alert severity="error">
+    {error}
+  </Alert>
+  </Snackbar>
       )}
     </Box>
   );

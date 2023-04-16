@@ -8,8 +8,6 @@ import {
   ERROR_SERVER,
 } from "dh-marvel/services/checkout/checkout.errors";
 import { ICheckout } from "types/Types";
-
-
 export const invalidAddress = "invalid";
 export const validCard = "4242424242424242";
 export const withoutFundsCard = "4111411141114111";
