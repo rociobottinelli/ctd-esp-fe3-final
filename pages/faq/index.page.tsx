@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import {
   Box,
@@ -10,7 +10,15 @@ import {
 import { faqsData } from "dh-marvel/components/faqs/faqsData";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const Faq: NextPage = () => {
+interface FaqProps {
+  faqsData: {
+    id: number;
+    question: string;
+    answer: string;
+  }[];
+}
+
+const Faq: NextPage<FaqProps> = ({ faqsData }) => {
   return (
     <div>
       <Head>
@@ -56,6 +64,14 @@ const Faq: NextPage = () => {
       </Box>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps<FaqProps> = async () => {
+  return {
+    props: {
+      faqsData,
+    },
+  };
 };
 
 export default Faq;
